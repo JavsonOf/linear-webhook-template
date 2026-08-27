@@ -21,6 +21,8 @@ if (!apiKey) {
   throw new Error('OPENAI_API_KEY is not configured for this repository.');
 }
 
+// Keep the provider credential only in this process. The Copilot runtime and
+// any shell commands it launches must not inherit the secret through env.
 delete process.env.OPENAI_API_KEY;
 delete process.env.COPILOT_PROVIDER_API_KEY;
 
